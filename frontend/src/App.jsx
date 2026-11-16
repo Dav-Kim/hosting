@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
-import "./app.css";
+import "./App.css";
 
 export default function App() {
   return (
