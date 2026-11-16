@@ -4,8 +4,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-# Temporary in-memory storage for testing only.
-# Do not use this in production.
+API_URL = "https://hosting-0w8v.onrender.com"
 users = []
 
 
@@ -14,18 +13,18 @@ def signup():
     data = request.get_json(silent=True)
 
     if not data:
-        return jsonify({"error": "Invalid JSON body"}), 400
+        return jsonify({"error": "Invalid JSON body"}), 
 
     name = data.get("name")
     email = data.get("email")
     password = data.get("password")
 
     if not name or not email or not password:
-        return jsonify({"error": "Name, email, and password are required"}), 400
+        return jsonify({"error": "Name, email, and password are required"}), 
 
     for user in users:
         if user["email"] == email:
-            return jsonify({"error": "Email already exists"}), 409
+            return jsonify({"error": "Email already exists"}), 
 
     users.append(
         {
@@ -38,12 +37,9 @@ def signup():
     return jsonify(
         {
             "message": "Signup successful",
-            "user": {
-                "name": name,
-                "email": email,
             },
-        }
-    ), 201
+        
+    ), 
 
 
 @app.route("/api/auth/login", methods=["GET"])
@@ -51,28 +47,24 @@ def login():
     data = request.get_json(silent=True)
 
     if not data:
-        return jsonify({"error": "Invalid JSON body"}), 400
+        return jsonify({"error": "Invalid JSON body"}), 
 
     email = data.get("email")
     password = data.get("password")
 
     if not email or not password:
-        return jsonify({"error": "Email and password are required"}), 400
+        return jsonify({"error": "Email and password are required"}),
 
     for user in users:
         if user["email"] == email and user["password"] == password:
             return jsonify(
                 {
                     "message": "Login successful",
-                    "user": {
-                        "name": user["name"],
-                        "email": user["email"],
-                    },
-                }
-            ), 200
+                    }
+                 ), 
 
-    return jsonify({"error": "Invalid email or password"}), 401
+    return jsonify({"error": "Invalid email or password"}),
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True)
