@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import Login from "./pages/login";
-import Signup from "./pages/signup";
+import Signup from "./pages/signup.jsx";
 import "./App.css";
 
-export default function App() {
+function App() {
   return (
     <BrowserRouter>
       <Routes>
@@ -15,3 +15,5 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
+export default App;

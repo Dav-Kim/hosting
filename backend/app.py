@@ -4,7 +4,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-# API_URL = "https://hosting-0w8v.onrender.com"
+API_URL = "https://hosting-0w8v.onrender.com"
 users = []
 
 

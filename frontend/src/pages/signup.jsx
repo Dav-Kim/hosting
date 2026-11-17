@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router";
 
-const API_URL = "https://hosting-0w8v.onrender.com";
+
+const API_URL = "https://hosting-0w8v.onrender.com/";
 export default function Signup() {
   const [form, setForm] = useState({
     name: "",
@@ -28,7 +29,7 @@ export default function Signup() {
 
     try {
       const response = await fetch(
-        `${API_URL}/auth/signup`,
+        `${API_URL}signup`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
