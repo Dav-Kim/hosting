@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 
+const API_URL = "https://hosting-0w8v.onrender.com";
 export default function Login() {
   const [form, setForm] = useState({
     email: "",
@@ -26,7 +27,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        "https://hosting-0w8v.onrender.com/api/auth/login",
+        `${API_URL}/auth/login`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

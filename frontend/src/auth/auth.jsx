@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../app.css";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_URL = "https://hosting-0w8v.onrender.com";
 
 function AuthTest() {
   const [signupData, setSignupData] = useState({
@@ -41,7 +41,7 @@ function AuthTest() {
     setResult("");
 
     try {
-      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      const response = await fetch(`${API_URL}${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,12 +87,12 @@ function AuthTest() {
 
   function handleSignup(event) {
     event.preventDefault();
-    sendRequest("/api/auth/signup", signupData);
+    sendRequest(`${API_URL}/auth/signup`, signupData);
   }
 
   function handleLogin(event) {
     event.preventDefault();
-    sendRequest("/api/auth/login", loginData);
+    sendRequest(`${API_URL}/auth/login`, loginData);
   }
 
   return (
