@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-
+import "./App.css";
 
 const API_URL = "https://hosting-0w8v.onrender.com/";
 export default function Login() {
