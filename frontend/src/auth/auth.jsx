@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { API_URL } from "../api.js";
 
 
-const API_URL = "https://hosting-0w8v.onrender.com";
 
 function AuthTest() {
   const [signupData, setSignupData] = useState({

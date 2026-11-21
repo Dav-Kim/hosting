@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import "../App.css";
+import { API_URL } from "../api.js";
 
-const API_URL = "https://hosting-0w8v.onrender.com/";
 export default function Signup() {
   const [form, setForm] = useState({
     name: "",
@@ -28,26 +28,23 @@ export default function Signup() {
     setResult("");
 
     try {
-      const response = await fetch(
-        `${API_URL}signup`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(form),
-        }
-      );
+      const response = await fetch(`${API_URL}/auth/signup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-      const text = await response();
+      const text = await response.text();
 
       // Keep non-JSON responses visible for debugging.
       let data;
       try {
-        data = JSON.parse();
+        data = JSON.parse(text);
       } catch {
         data = text;
       }
 
-      setResult.hidden(
+      setResult(
         `${response.ok ? "Success" : "Failed"} (${response.status})\n` +
           JSON.stringify(data, null, 2)
       );
@@ -104,11 +101,7 @@ export default function Signup() {
             required
           />
 
-          <button
-            className="auth-button"
-            type="submit"
-            disabled={loading}
-          >
+          <button className="auth-button" type="submit" disabled={loading}>
             {loading ? "Creating account..." : "Sign Up"}
           </button>
         </form>
